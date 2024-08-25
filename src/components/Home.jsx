@@ -6,7 +6,6 @@ import { deleteUser } from "../slices/UsersSlice";
 const Home = () => {
   const users = useSelector((state) => state.users);
   const [usersData, setUsersData] = useState(users);
-  console.log(usersData);
   const dispatch = useDispatch();
 
   const handleDelete = (id) => {
