@@ -12,17 +12,6 @@ const Home = () => {
     dispatch(deleteUser({ id }));
   };
 
-  // useEffect(() => {
-  //   const storedData = localStorage.getItem("users");
-  //   if (storedData) {
-  //     setUsersData(JSON.parse(storedData));
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   localStorage.setItem("users", JSON.stringify(usersData));
-  // }, [usersData]);
-
   return (
     <div className="container mt-5">
       <h1 className="text-center fw-bolder">CRUD App with JSON data</h1>
