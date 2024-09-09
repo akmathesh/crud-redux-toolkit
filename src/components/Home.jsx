@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { deleteUser } from "../slices/UsersSlice";
+import { getLocalStorageItem, deleteUser } from "../slices/UsersSlice";
 
 const Home = () => {
-  const users = useSelector((state) => state.users);
-  const [usersData, setUsersData] = useState(users);
+  const { userData } = useSelector((state) => state.users);
+  console.log(userData);
   const dispatch = useDispatch();
 
   const handleDelete = (id) => {
     dispatch(deleteUser({ id }));
   };
+
+  // useEffect(() => {
+  //   dispatch(getLocalStorageItem())
+  // }, [])
 
   return (
     <div className="container mt-5">
@@ -29,8 +33,8 @@ const Home = () => {
           </tr>
         </thead>
         <tbody>
-          {users.length > 0 ? (
-            users.map((user, index) => (
+          {userData.length > 0 ? (
+            userData.map((user, index) => (
               <tr key={index} className="text-center">
                 <td>{user.id}</td>
                 <td>{user.name}</td>

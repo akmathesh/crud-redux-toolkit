@@ -1,18 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addUser } from "../slices/usersSlice";
+import { addUser, updateLocalStoarege } from "../slices/UsersSlice";
 
 const Create = () => {
-  const [name, setName] = useState(null);
-  const [email, setEmail] = useState(null);
-  const users = useSelector((state) => state.users);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const { userData } = useSelector((state) => state.users);
+
+  // console.log(users);
+
+  useEffect(() => {
+    dispatch(updateLocalStoarege(userData));
+  }, [userData]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(addUser({ id: users.length + 1, name, email }));
+    dispatch(addUser({ id: Math.random(), name, email }));
     setName("");
     setEmail("");
     navigate("/");

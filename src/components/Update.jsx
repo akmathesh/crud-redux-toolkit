@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { updateUser } from "../slices/usersSlice.jsx";
+import { updateUser } from "../slices/UsersSlice.jsx";
 
 const Update = () => {
   const { id } = useParams();
